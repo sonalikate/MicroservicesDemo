@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven-3.6.3'
+        jdk 'openjdk11'
+    }
+    stages {
+        stage ('Initialize') {
+            steps {
+              checkout scm
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+            }
+        }
+      
+           
+      stage ('Build') {
+            steps {
+            sh 'mvn -f pom.xml clean install -Dmaven.test.skip=true'              
+                }
+           }
+	stage ('sonartest') {
+		steps {
+		sh '''
+			mvn -f pom.xml -e -B sonar:sonar -Dsonar.host.url=http://10.171.178.13:9000
+		'''                
+		}
+     }
+	 stage ('deploy') {
+            steps {
+            sh '''
+                sudo docker build -t usermanagement:jdk${BUILD_NUMBER} .
+
+				 ID=$(sudo docker images | awk '$1 == "usermanagement" {print $3}')
+
+				 sudo docker tag $ID 100.125.7.25:20202/otc-eu-de-test/usermanagement:jdk${BUILD_NUMBER}
+
+				 sudo docker push 100.125.7.25:20202/otc-eu-de-test/usermanagement:jdk${BUILD_NUMBER}
+
+				 sudo docker rmi -f $ID
+            '''                
+            }
+         }        
+      }    
+}
