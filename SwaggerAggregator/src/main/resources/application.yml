@@ -1,0 +1,27 @@
+UPLOADED_FOLDER: <Document output folder e.g. /home/s182911/SwaggerDocs/>
+URL_CONTEXT: <Service URL e.g. http://10.223.99.51:15005/>
+logging.file: /log/swagger-service.log
+
+server:
+ port: 8082
+ servlet.context-path: /nemo
+documentation:
+  swagger:
+    services:
+      -
+        name: Core1 Service
+        url: /core1-service/1.0/
+        version: 1.0   
+      -
+        name: Core2 Service
+        url: /core2-service/1.0/
+        version: 1.0
+      - 
+        name: Composite Service
+        url: /composite1-service/1.0/
+        version: 1.0
+      - 
+        name: Core3 Service
+        url: /core3-service/1.0/
+        version: 1.0
+     
