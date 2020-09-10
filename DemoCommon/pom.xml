@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.demo</groupId>
+	<version>1.0.0</version>
+	<artifactId>demo-common</artifactId>
+	<packaging>pom</packaging>
+	<modules>
+		<module>demo-common-model</module>
+		<module>demo-common-util</module>
+	</modules>
+	<properties>
+		<maven-jaxb2-plugin.version>0.11.0</maven-jaxb2-plugin.version>
+		<cosmos.version>1.0.0</cosmos.version>
+		<guava.version>27.1-jre</guava.version>
+		<java.version>11</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<springboot.version>2.1.6.RELEASE</springboot.version>
+		<springcloud.version>Greenwich.SR2</springcloud.version>
+		<commons-logging.version>1.2</commons-logging.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<application.version>1.0.0</application.version>
+		<swagger.annotations.version>1.5.22</swagger.annotations.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${springboot.version}</version>
+			<!-- <exclusions> <exclusion> <groupId>org.springframework.boot</groupId> 
+				<artifactId>spring-boot-starter-tomcat</artifactId> </exclusion> </exclusions> -->
+		</dependency>
+	</dependencies>
+</project>
