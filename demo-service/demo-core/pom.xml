@@ -20,6 +20,11 @@
 			<artifactId>demo-datatypes</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.demo</groupId>
+			<artifactId>demo-common-util</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 		<!-- Spring Dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
