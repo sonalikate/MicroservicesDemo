@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.swagger</groupId>
+	<artifactId>SwaggerAggregator</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+
+	<name>SwaggerAggregator</name>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.3.RELEASE</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.swagger2markup</groupId>
+			<artifactId>swagger2markup-import-files-ext</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.swagger2markup</groupId>
+			<artifactId>swagger2markup-maven-plugin</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.asciidoctor</groupId>
+			<artifactId>asciidoctorj</artifactId>
+			<version>1.5.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.asciidoctor</groupId>
+			<artifactId>asciidoctorj-pdf</artifactId>
+			<version>1.5.0-alpha.16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.asciidoctor</groupId>
+			<artifactId>asciidoctor-java-integration</artifactId>
+			<version>0.1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.asciidoctor</groupId>
+			<artifactId>asciidoctor-maven-plugin</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<springboot.version>1.5.1.RELEASE</springboot.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.swagger.SwaggerAggregator.SwaggerApplication</mainClass>
+					<!-- Asciidoctor and JRuby doesnot run from a nested jar file so we 
+						need to configure the build to unpack the nested jars to a temporary location -->
+					<requiresUnpack>
+						<dependency>
+							<groupId>org.jruby</groupId>
+							<artifactId>jruby-complete</artifactId>
+						</dependency>
+						<dependency>
+							<groupId>org.asciidoctor</groupId>
+							<artifactId>asciidoctorj</artifactId>
+						</dependency>
+						<dependency>
+							<groupId>org.asciidoctor</groupId>
+							<artifactId>asciidoctorj-pdf</artifactId>
+						</dependency>
+					</requiresUnpack>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
