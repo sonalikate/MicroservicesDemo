@@ -19,7 +19,7 @@
 		<java.version>11</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<springboot.version>2.1.6.RELEASE</springboot.version>
+		<springboot.version>2.5.12</springboot.version>
 		<springcloud.version>Greenwich.SR2</springcloud.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
